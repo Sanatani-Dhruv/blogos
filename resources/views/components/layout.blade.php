@@ -10,7 +10,7 @@
     </head>
     <body class="mt-60 md:mt-20 bg-gray-200/100">
         @include ('common.header')
-        <main class="main container mx-auto h-80 flex flex-col items-center justify-center">
+        <main class="main container mx-auto">
             {{ $slot }}
         </main>
         @include ('common.footer')
