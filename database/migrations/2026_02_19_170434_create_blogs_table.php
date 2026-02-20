@@ -13,11 +13,16 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable();
             $table->string('author');
-            $table->string('message');
-            $table->foreignId('user_id');
-            $table->timestamps();
+            $table->string('message', 10000);
+            $table->timestamp('created_at')->useCurrent();
         });
+
+        DB::table('blogs')->insert([
+            'author' => 'Ram Swami',
+            'message' => 'This Message is Default from App.'
+        ]);
     }
 
     /**
