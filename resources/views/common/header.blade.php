@@ -3,12 +3,20 @@
         <div class="h-full">
             <a href="/">
                 <h1 class="text-2xl font-semibold">
-                    Blogos
+                    <span class="text-red-600/100">Blog</span>Os
                 </h1>
             </a>
         </div>
+        <img width="18" id="hamburger" class="cursor-pointer md:hidden" src="/home-icon.svg" alt="">
         <nav class="navbar hidden md:block">
             <ul class="flex flex-1 gap-4 text-lg flex-col font-medium md:flex-row max-w-screen-lg" >
+                @if ( request()->path() != '/')
+                    <a class="navlink-li hover:bg-red-300 align-middle transition-all pt-1 pb-1 pl-3 pr-3 rounded-md text-center" href="/">
+                        <li class="navlink flex gap-1 items-center">
+                            <img width="18" class="pb-1.5" src="/home-icon.svg" alt=""> Home
+                        </li>
+                    </a>
+                @endif
                 <a class="navlink-li hover:bg-red-300 transition-all pt-1 pb-1 pl-3 pr-3 rounded-md text-center" href="/contact">
                     <li class="navlink">Contact</li>
                 </a>

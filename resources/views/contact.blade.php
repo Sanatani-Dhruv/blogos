@@ -1,4 +1,4 @@
-<x-layout title="Home">
+<x-layout title="Contact">
     <h1 class="mx-auto font-semibold text-3xl p-4">
         Contact Us
     </h1>
