@@ -7,7 +7,7 @@
                 </h1>
             </a>
         </div>
-        <nav class="navbar">
+        <nav class="navbar hidden md:block">
             <ul class="flex flex-1 gap-4 text-lg flex-col font-medium md:flex-row max-w-screen-lg" >
                 <a class="navlink-li hover:bg-red-300 transition-all pt-1 pb-1 pl-3 pr-3 rounded-md text-center" href="/contact">
                     <li class="navlink">Contact</li>
