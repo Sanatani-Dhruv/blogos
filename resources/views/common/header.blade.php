@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 right-0 bg-blue-300 header">
+<header class="fixed top-0 left-0 right-0 bg-blue-300/100 header z-10 shadow shadow-lg">
     <div class="ml-8 mr-8 pt-4 pb-4 flex md:items-center justify-between box-border">
         <div class="h-full">
             <a href="/">
