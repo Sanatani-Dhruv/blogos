@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Blog;
 
 class BlogController extends Controller {
+    private $blogModel;
+    public function __construct() {
+        $this->blogModel = new Blog();
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -56,9 +62,18 @@ class BlogController extends Controller {
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
+    public function show(string $id) {
         //
+    }
+
+    /**
+     * Fetch all blogs
+     */
+    public function getAll(string $id = "") {
+        $blogs = (array) $this->blogModel->fetchAll();
+        return view('home', [
+            'blogs' => $blogs
+        ]);
     }
 
     /**
