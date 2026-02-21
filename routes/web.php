@@ -19,5 +19,5 @@ Route::get('/signup', function () {
 });
 
 Route::get('/signin', function () {
-    return view('register');
+    return view('login');
 });
