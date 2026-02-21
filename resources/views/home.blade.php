@@ -13,14 +13,14 @@
     <h1 class="container text-3xl pb-8 font-medium text-center underline">Blogs</h1>
     <div class="blog-container flex gap-8 flex-col mb-4 items-center">
         @foreach ($blogs as $value)
-            <div class="card p-4 bg-lime-500/30 w-4/5 lg:w-200 rounded shadow shadow-lg shadow-black/20 scale-100 hover:scale-105 hover:cursor-pointer transition-all duration-200 z-0">
+            <div class="card p-4 bg-gradient-to-r from-cyan-500 to-blue-500 w-4/5 lg:w-200 rounded shadow shadow-xl shadow-black/20 scale-100 hover:scale-105 hover:cursor-pointer transition-all duration-200 z-0">
                 <h2 class="text-2xl font-semibold pb-1">
                     {{ $value->author }}
                 </h2>
                 <p class="text-md font-medium">
                     {{ $value->message }}
                 </p>
-                <div class="text-sm text-gray-600 pt-1 text-right">
+                <div class="text-sm text-gray-200/100 font-bold pt-1 text-right">
                     - {{ $value->created_at }}
                 </div>
             </div>
