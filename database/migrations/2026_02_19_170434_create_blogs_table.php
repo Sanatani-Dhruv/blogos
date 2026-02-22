@@ -13,16 +13,31 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
-            $table->string('author');
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('message', 10000);
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
         });
 
-        DB::table('blogs')->insert([
-            'author' => 'Ram Swami',
-            'message' => 'This Message is Default from App.'
+        $user = \App\Models\User::create([
+            'name' => 'Ram Swami',
+            'email' => 'example@exe.com',
+            'password' => bcrypt('admin123')
         ]);
+
+        $blog = $user->blogs()->create([
+            'message' => 'So Eloquent is making amazing thing, it is second thing that i don\'t know how to use it'
+        ]);
+
+        // DB::table('blogs')->insert([
+        //     [
+        //         'author' => 'Ram Swami',
+        //         'message' => 'This Message is Default from App.'
+        //     ],
+        //     [
+        //         'author' => 'Shyam Swami',
+        //         'message' => 'This Message is also default from App.'
+        //     ]
+        // ]);
     }
 
     /**

@@ -70,7 +70,7 @@ class BlogController extends Controller {
      * Fetch all blogs
      */
     public function getAll(string $id = "") {
-        $blogs = (array) $this->blogModel->fetchAll();
+        $blogs = Blog::with('user')->latest()->take(50)->get();
         return view('home', [
             'blogs' => $blogs
         ]);

@@ -12,18 +12,20 @@
     </div>
     <h1 class="container text-3xl pb-8 font-medium text-center underline">Blogs</h1>
     <div class="blog-container flex gap-8 flex-col mb-4 items-center">
-        @foreach ($blogs as $value)
+        @forelse ($blogs as $blog)
             <div class="card p-4 bg-gradient-to-r from-cyan-500 to-blue-500 w-4/5 lg:w-200 rounded shadow shadow-xl shadow-black/20 scale-100 hover:scale-105 hover:cursor-pointer transition-all duration-200 z-0">
                 <h2 class="text-2xl font-semibold pb-1">
-                    {{ $value->author }}
+                    {{ $blog->user ? $blog->user->name : 'Anonymous' }}
                 </h2>
                 <p class="text-md font-medium">
-                    {{ $value->message }}
+                    {{ $blog->message }}
                 </p>
                 <div class="text-sm text-gray-200/100 font-bold pt-1 text-right">
-                    - {{ $value->created_at }}
+                    - {{ $blog->created_at->diffForHumans() }}
                 </div>
             </div>
-        @endforeach
+        @empty
+            <p class="text-gray-500">No Blogs yet. Be the first to post blogs!</p>
+        @endforelse
     </div>
 </x-layout>
