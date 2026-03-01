@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './custom.css';
 
 /* Fixing Hover Problem in touch devices */
 @custom-variant hover (&:hover);

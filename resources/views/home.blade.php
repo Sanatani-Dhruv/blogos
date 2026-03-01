@@ -14,8 +14,14 @@
     <div>
         <form method="POST" action="/blogs">
             @csrf
-            <div class="form-control w-full">
-                <textarea class="textarea border focus:border-amber-50/50 w-full resize-none pl-2 pr-2 pt-1 pb-1" placeholder="What's on your mind?" name="" rows="4"></textarea>
+            <h2 class="text-2xl font-normal md:w-165 w-auto m-auto mb-8">
+                First Blog!
+            </h2>
+            <div class="form-control md:w-160 w-auto m-auto rounded bg-gray-100/100 p-4 text-right shadow-md mb-8">
+                <textarea id="message" name="message" class="textarea border rounded bg-white m-auto w-full resize-none pl-2 pr-2 pt-1 pb-1" placeholder="What's on your mind?" name="" rows="4" required></textarea>
+                <div class="flex justify-end">
+                <button class="btn btn-primary bg-white p-1 pl-2 pr-2 rounded hover:opacity-90  transition-all" type="submit">Submit</button>
+                </div>
             </div>
         </form>
     </div>

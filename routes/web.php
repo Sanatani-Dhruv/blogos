@@ -4,7 +4,9 @@
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ BlogController::class , 'getAll']);
+Route::get('/', [ BlogController::class , 'index']);
+
+Route::post('/blogs', [ BlogController::class , 'store']);
 
 Route::get('/about', function () {
     return view('about');

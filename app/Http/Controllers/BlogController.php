@@ -6,38 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 
 class BlogController extends Controller {
-    private $blogModel;
     public function __construct() {
-        $this->blogModel = new Blog();
+        //
     }
 
     /**
      * Display a listing of the resource.
      */
     public function index() {
-        $blogs = [
-            [
-                'author' => 'Shyam Prasad',
-                'message' => 'This Time it is difficult to save Culture.',
-                'time' => '9 minutes ago'
-            ],
-            [
-                'author' => 'Ram Prasad',
-                'message' => 'We did it before we can do it again this time!',
-                'time' => '27 minutes ago',
-            ],
-            [
-                'author' => 'Babu Rao Ganpat Rao Apte',
-                'message' => 'We did it before we can do it again this time!',
-                'time' => '30 minutes ago',
-            ],
-            [
-                'author' => 'Devi Prasad',
-                'message' => 'Why are we even here, to suffer',
-                'time' => '45 minutes ago',
-            ]
-        ];
-
+        $blogs = Blog::with('user')->latest()->take(5)->get();
+        // print_r($blogs);
         return view('home', [
             'blogs' => $blogs
         ]);
@@ -54,9 +32,18 @@ class BlogController extends Controller {
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'message' => 'required|string|max:255'
+        ]);
+
+        Blog::create([
+            'message' => $validated['message'],
+            'user' => null
+        ]);
+
+        return redirect('/')->with('success', 'Blog created!');
+
     }
 
     /**
@@ -64,17 +51,6 @@ class BlogController extends Controller {
      */
     public function show(string $id) {
         //
-    }
-
-    /**
-     * Fetch all blogs
-     */
-    public function getAll(string $id = "") {
-        $blogs = Blog::with('user')->latest()->take(5)->get();
-        // print_r($blogs);
-        return view('home', [
-            'blogs' => $blogs
-        ]);
     }
 
     /**
